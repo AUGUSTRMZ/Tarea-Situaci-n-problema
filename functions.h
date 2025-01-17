@@ -151,6 +151,50 @@ void mergeArray(vector<Registro> &registros, vector<Registro> &aux, int left, in
   explica bastante bien estos pequeños cambios pero que podrian resultar confusos para quien vea este
   reppo o mi yo del futuro
 
+  Asi a grandes rasgos lo que hace es que divide el arreglo en mitades cada vez mas pequenias
+    y al final las acomoda y vuelve a unir estas mitades pero ya arregladas
+    en este caso lo hice de forma recursiva, no se si se pueda hacer de otro modo pero por el momento
+    esta jalo y pues ya mejor ni le muevas, se que lo que se te complica mas de las 3 mitades de entender es
+    la funcion que ordena las mitades entonces pues basicamente esta funciona con un vector temporal y con 3 indices (i,j y k)
+    los cuales representan el indice que va desde;
+    i = mitad izquierda
+    j = mitad derecha
+    k = arreglo completo del orignal
+
+    con un ciclo for voy pegando estos valores a uno temporal y al final se los paso al orignal
+    ahora con un ciclo while lo que hiciste fue definir limites para cada indice de las mitades (i y j)
+    donde pones que el ciclo se ejecuta hasta que estas no lleguen a su tamanio en este caso que la mitad izquierda no pase
+    la mitad del arreglo y que la derecha no pase el indice derecho final luego mientras esto se cumpla
+    se evalua si el vector auxiliar que tiene los datos se va pasando por las dos mitades con los indices i y j si el de la
+    izquierda osea el indice i es menor que el del indice j de la mitad derecha entonces ese valor se pasa al arreglo orignal
+    y ambos indices crecen para poder pegar en el siguiente espacio y no haya datos repetidos por parte de i y que no se este
+    pegando todo en el mismo lugar por parte de j
+    de caso contrario pues lo mismo pero en lugar de i es j.
+
+    te pongo un ejemplo mas visual de como funciona esto
+    por ejemplo tenemos un arreglo auxiliar y uno original
+1.
+
+            i         j
+    aux[] ={0, 7, 5 , 6 , 3 , 8}
+
+             k
+    arr[] = {0}
+    i solo llega hasta el 5 que es su limite en el while y j hasta el 8, van avanzando mientras se van comparando, si i es menor que j entonces el valor de i
+    se pega en el arreglo original e i pasa el siguiente elemento
+
+2.
+                i           j
+    aux[] ={0,  7,  5 , 6 , 3 , 8} 
+    de nuevo se vuelve a hacer la comparacion y asi sucesivamente
+    
+               k
+    arr[] ={0, 3}
+
+    IMPORTANTE
+    si el que resulto mayor no es el que se imprime ese indice no avanza al siguiente por ejemplo i
+    no se mueve de 7 hasta que se comprare con el siguiente de j para evitar saltarte datos en el arreglo
+    o pegarlos en el mismo lugar con el indice k
   */
 }
 
